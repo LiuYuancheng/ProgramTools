@@ -2,12 +2,11 @@
 #-----------------------------------------------------------------------------
 # Name:        geoLRun.py
 #
-# Purpose:     This module is used to convert a url to the IP address then 
-#              find the GPS position it and draw it on the google map.
+# Purpose:     This module is used to create a wx frame 
 #
 # Author:      Yuancheng Liu
 #
-# Created:     2019/10/14
+# Created:     2019/01/10
 # Copyright:   YC @ Singtel Cyber Security Research & Development Laboratory
 # License:     YC
 #-----------------------------------------------------------------------------
@@ -15,7 +14,6 @@ import os, sys
 import wx
 
 import uiGobal as gv
-#import geoLPanel as gp
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------

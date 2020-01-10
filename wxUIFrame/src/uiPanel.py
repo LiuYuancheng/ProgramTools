@@ -2,25 +2,25 @@
 #-----------------------------------------------------------------------------
 # Name:        TelloPanel.py
 #
-# Purpose:     This module is used to create the control or display panel for
-#              ip geolocation system.
+# Purpose:     This module is used to create different function panels.
 # Author:      Yuancheng Liu
 #
-# Created:     2019/10/14
+# Created:     2020/01/10
 # Copyright:   YC @ Singtel Cyber Security Research & Development Laboratory
 # License:     YC
 #-----------------------------------------------------------------------------
 import wx
-import webbrowser
+
 from datetime import datetime
 import uiGobal as gv
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
-class PanelMap(wx.Panel):
+class PanelImge(wx.Panel):
     """ Map panel to show the google map."""
-    def __init__(self, parent, panelSize=(768, 512)):
-        wx.Panel.__init__(self, parent,  size=panelSize)
+
+    def __init__(self, parent, panelSize=(640, 480)):
+        wx.Panel.__init__(self, parent, size=panelSize)
         self.SetBackgroundColour(wx.Colour(200, 200, 200))
         self.panelSize = panelSize
         self.bmp = wx.Bitmap(gv.BGIMG_PATH, wx.BITMAP_TYPE_ANY)

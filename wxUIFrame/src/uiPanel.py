@@ -17,7 +17,7 @@ import uiGobal as gv
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 class PanelImge(wx.Panel):
-    """ Map panel to show the google map."""
+    """ Panel to display image. """
 
     def __init__(self, parent, panelSize=(640, 480)):
         wx.Panel.__init__(self, parent, size=panelSize)
@@ -27,18 +27,16 @@ class PanelImge(wx.Panel):
         self.Bind(wx.EVT_PAINT, self.onPaint)
         self.SetDoubleBuffered(True)
 
-#--PanelMap--------------------------------------------------------------------
+#--PanelImge--------------------------------------------------------------------
     def onPaint(self, evt):
-        """ Draw the map bitmap and mark the gps position."""
+        """ Draw the map on the panel."""
         dc = wx.PaintDC(self)
-        l, (w, h) = 8, self.panelSize  # set the bm size and the marker size.
+        w, h = self.panelSize
         dc.DrawBitmap(self._scaleBitmap(self.bmp, w, h), 0, 0)
-        dc.SetPen(wx.Pen('RED', width=1, style=wx.PENSTYLE_SOLID))
-        w, h = w//2, h//2
-        dc.DrawLine(w-l, h, w+l, h)
-        dc.DrawLine(w, h-l, w, h+l)
+        dc.SetPen(wx.Pen('RED'))
+        dc.DrawText('This is a sample image', w//2, h//2)
 
-#--PanelMap--------------------------------------------------------------------
+#--PanelImge--------------------------------------------------------------------
     def _scaleBitmap(self, bitmap, width, height):
         """ Resize a input bitmap.(bitmap-> image -> resize image -> bitmap)"""
         #image = wx.ImageFromBitmap(bitmap) # used below 2.7
@@ -48,7 +46,15 @@ class PanelImge(wx.Panel):
         result = wx.Bitmap(image, depth=wx.BITMAP_SCREEN_DEPTH)
         return result
 
-#--PanelMap--------------------------------------------------------------------
+#--PanelImge--------------------------------------------------------------------
+    def _scaleBitmap2(self, bitmap, width, height):
+        """ Resize a input bitmap.(bitmap-> image -> resize image -> bitmap)"""
+        image = wx.ImageFromBitmap(bitmap) # used below 2.7
+        image = image.Scale(width, height, wx.IMAGE_QUALITY_HIGH)
+        result = wx.BitmapFromImage(image) # used below 2.7
+        return result
+
+#--PanelImge--------------------------------------------------------------------
     def updateBitmap(self, bitMap):
         """ Update the panel bitmap image."""
         if not bitMap: return

@@ -14,11 +14,14 @@ import os
 
 dirpath = os.getcwd()
 print("Current working directory is : %s" % dirpath)
-APP_NAME = 'GateWay DashBoat'
+APP_NAME = 'uiFrame'
 
 #------<IMAGES PATH>-------------------------------------------------------------
 IMG_FD = 'img'
 ICO_PATH = os.path.join(dirpath, IMG_FD, "geoIcon.ico")
+BGIMG_PATH = os.path.join(dirpath, IMG_FD, "SampleImg.png")
 
 #-------<GLOBAL PARAMTERS>-----------------------------------------------------
-iMainFrame = None   # MainFrame 
+iMainFrame = None   # MainFrame.
+iImagePanel = None  # Image panel.
+iUpdateRate = 1     # main frame update rate 1 sec.

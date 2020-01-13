@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #-----------------------------------------------------------------------------
-# Name:        TelloPanel.py
+# Name:        uiPanel.py
 #
 # Purpose:     This module is used to create different function panels.
 # Author:      Yuancheng Liu

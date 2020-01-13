@@ -1,8 +1,8 @@
 #!/usr/bin/python
 #-----------------------------------------------------------------------------
-# Name:        geoLRun.py
+# Name:        uiRun.py
 #
-# Purpose:     This module is used to create a wx frame 
+# Purpose:     This module is used to create the main wx frame.
 #
 # Author:      Yuancheng Liu
 #

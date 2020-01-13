@@ -24,4 +24,5 @@ BGIMG_PATH = os.path.join(dirpath, IMG_FD, "SampleImg.png")
 #-------<GLOBAL PARAMTERS>-----------------------------------------------------
 iMainFrame = None   # MainFrame.
 iImagePanel = None  # Image panel.
+iCtrlPanel = None   # control panel
 iUpdateRate = 1     # main frame update rate 1 sec.

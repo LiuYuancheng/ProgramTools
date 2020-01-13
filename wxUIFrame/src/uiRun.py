@@ -46,14 +46,16 @@ class UIFrame(wx.Frame):
         mSizer.Add(wx.StaticLine(self, wx.ID_ANY, size=(-1, 560),
                                  style=wx.LI_VERTICAL), flag=flagsR, border=2)
         mSizer.AddSpacer(5)
+        gv.iCtrlPanel = pl.PanelCtrl(self)
+        mSizer.Add(gv.iCtrlPanel, flag=flagsR, border=2)
         return mSizer
 
 #--UIFrame---------------------------------------------------------------------
     def periodic(self, event):
         """ Call back every periodic time."""
-        now = time.time() 
+        now = time.time()
         if (not self.updateLock) and now - self.lastPeriodicTime >= gv.iUpdateRate:
-            print("main frame update at %s" %str(now))
+            print("main frame update at %s" % str(now))
             self.lastPeriodicTime = now
 
 #-----------------------------------------------------------------------------

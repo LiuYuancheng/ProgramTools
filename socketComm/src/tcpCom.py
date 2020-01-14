@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #-----------------------------------------------------------------------------
-# Name:        uiRun.py
+# Name:        tcpCom.py
 #
 # Purpose:     This module will provide a TCP client + server API and a multi-thread
 #              test case which may be used for other project.

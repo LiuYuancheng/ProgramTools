@@ -11,7 +11,6 @@
 # License:     
 #-----------------------------------------------------------------------------
 
-import time
 import socket
 
 BUFFER_SZ = 4096    # TCP buffer size.
@@ -47,7 +46,7 @@ class tcpClient(object):
 
 #--tcpClient-------------------------------------------------------------------
     def sendMsg(self, msg=None, resp=False):
-        """ Convert the msg to bytes and send it to server. 
+        """ Convert the msg to bytes and send it to TCP server. 
             - resp: server response flag, method will wait server's response and 
                 return the bytes format response if it is set to True. 
         """

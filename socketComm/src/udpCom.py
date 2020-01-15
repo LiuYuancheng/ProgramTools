@@ -12,9 +12,7 @@
 # License:     
 #-----------------------------------------------------------------------------
 
-import time
 import socket
-import threading    # create multi-thread test case.
 
 BUFFER_SZ = 4096    # TCP buffer size.
 
@@ -23,11 +21,19 @@ BUFFER_SZ = 4096    # TCP buffer size.
 class udpClient(object):
     """ UDP client module."""
     def __init__(self, ipAddr):
+        """ Create an ipv4 (AF_INET) socket object using the udp protocol (SOCK_DGRAM)
+            init example: client = udpClient(('127.0.0.1', 502))
+        """
         self.ipAddr = ipAddr
         self.client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    
+
+#--udpClient-------------------------------------------------------------------
     def sendMsg(self, msg, resp=False, ipAddr=None):
-        if not ipAddr is None: self.ipAddr = ipAddr
+        """ Convert the msg to bytes and send it to UDP server. 
+            - resp: server response flag, method will wait server's response and 
+                return the bytes format response if it is set to True. 
+        """
+        if not ipAddr is None: self.ipAddr = ipAddr  # reset ip address.
         if not isinstance(msg, bytes): msg = str(msg).encode('utf-8')
         self.client.sendto(msg, self.ipAddr)
         if resp:
@@ -35,9 +41,9 @@ class udpClient(object):
             return data
         return None
 
+#--udpClient-------------------------------------------------------------------
     def disconnect(self):
-        """ Send a empty message and close the socket.
-        """
+        """ Send a empty logout message and close the socket."""
         self.sendMsg(msg='')
         self.client.close()
 
@@ -46,18 +52,21 @@ class udpClient(object):
 class udpServer(object):
     """ UDP server module."""
     def __init__(self, parent, port):
+        """ Create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
+            init example: server = udpServer(None, 5005)
+        """
         self.server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.server.bind(('0.0.0.0', port))
         self.terminate = False  # Server terminate flag.
 
 #--udpServer-------------------------------------------------------------------
     def serverStart(self, handler=None):
-        """ Start the TCP server to handle the incomming message."""
+        """ Start the UDP server to handle the incomming message."""
         while not self.terminate:
             data, address = self.server.recvfrom(BUFFER_SZ)
             print("Accepted connection from %s" % str(address))
             msg = handler(data) if not handler is None else data
-            if not msg is None: # don't response client if the handler feed back is None
+            if not msg is None:  # don't response client if the handler feed back is None
                 if not isinstance(msg, bytes): msg = str(msg).encode('utf-8')
                 self.server.sendto(msg, address)
         self.server.close()
@@ -68,54 +77,4 @@ class udpServer(object):
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
-class testThread(threading.Thread):
-    """ Thread to test the UDP server.""" 
-    def __init__(self, threadID, name, counter):
-        threading.Thread.__init__(self)
-        self.testPort = 5005
-        self.server = udpServer(None, self.testPort)
-
-    def msgHandler(self, msg):
-        """ Test handler method to handle the incomming message."""
-        print("Incomming message: %s" %str(msg))
-        return msg
-
-    def run(self):
-        """ Main loop to handle the data feed back."""
-        print("Server thread start.")
-        self.server.serverStart(handler=self.msgHandler)
-        print("Server thread end.")
-
-    def stop(self):
-        self.server.serverStop()
-        endClient = udpClient(('127.0.0.1', self.testPort))
-        endClient.disconnect()
-        endClient = None
-
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-def testCase(mode):
-    print("Start UDP client-server test.")
-    testPort = 5005
-    if mode == 1:
-        print("Start the UDP Server.")
-        servThread = testThread(1, "server thread", 1)
-        servThread.start()
-        print("Start the UDP Client.")
-        ipAddr = ('127.0.0.1', testPort)
-        client = udpClient(ipAddr)
-        for i in range(2):
-            msg = "Test data %s" %str(i)
-            result = client.sendMsg(msg, resp=True)
-            print(result)
-        print("Test client disconnect.")
-        client.disconnect()
-        client = None
-        print("Test server stop.")
-        servThread.stop()
-        print("Test end")
-    else:
-        print("Add more other exception test here.")
-#-----------------------------------------------------------------------------
-if __name__ == '__main__':
-    testCase(1)
+# Test case program: udpComTest.py

@@ -24,8 +24,7 @@ class testThread(threading.Thread):
     def __init__(self, parent, threadID, name):
         threading.Thread.__init__(self)
         self.threadName = name
-        self.testPort = TCP_PORT
-        self.server = tcpCom.tcpServer(None, self.testPort, connectNum=1)
+        self.server = tcpCom.tcpServer(None, TCP_PORT, connectNum=1)
 
     def msgHandler(self, msg):
         """ The test handler method passed into the TCP server to handle the 
@@ -42,9 +41,9 @@ class testThread(threading.Thread):
         self.threadName = None # set the thread name to None when finished.
 
     def stop(self):
-        """ Stop the tcp server. create a endclient to bypass the rev() block."""
+        """ Stop the tcp server. Create a endclient to bypass the rev() block."""
         self.server.serverStop()
-        endClient =tcpCom.tcpClient(('127.0.0.1', self.testPort))
+        endClient =tcpCom.tcpClient(('127.0.0.1', TCP_PORT))
         endClient.disconnect()
         endClient = None
 

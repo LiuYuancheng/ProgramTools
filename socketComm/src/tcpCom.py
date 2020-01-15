@@ -70,7 +70,7 @@ class tcpClient(object):
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 class tcpServer(object):
-    """ TCP client module."""
+    """ TCP server module."""
     def __init__(self, parent, port, connctNum=1):
         """ Create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
             init example: server = tcpServer(None, 5005, connctNum=1)
@@ -80,21 +80,22 @@ class tcpServer(object):
         self.server.listen(connctNum)
         self.terminate = False  # Server terminate flag.
 
-#--tcpClient-------------------------------------------------------------------
+#--tcpServer-------------------------------------------------------------------
     def serverStart(self, handler=None):
-        """ Start the server to handle the incomming message."""
+        """ Start the TCP server to handle the incomming message."""
         while not self.terminate:
             client_socket, address = self.server.accept()
             print("Accepted connection from %s" % str(address))
             while not self.terminate:
                 request = client_socket.recv(BUFFER_SZ)
+                if request == b'': break  # client disconnected
                 msg = handler(request) if not handler is None else request
                 if not msg is None: # don't response client if the handler feed back is None
                     if not isinstance(msg, bytes): msg = str(msg).encode('utf-8')
-                    if msg == b'': break  # client disconnected
                     client_socket.send(msg)
+        self.server.close()
 
-#--tcpClient-------------------------------------------------------------------
+#--tcpServer-------------------------------------------------------------------
     def serverStop(self):
         self.terminate = True
 
@@ -131,7 +132,7 @@ def testCase(mode):
     testPort = 5005
     if mode == 1:
         print("Start the TCP Server.")
-        servThread = testThread(3, "server thread", 1)
+        servThread = testThread(1, "server thread", 1)
         servThread.start()
         print("Start the TCP Client.")
         ipAddr = ('127.0.0.1', testPort)

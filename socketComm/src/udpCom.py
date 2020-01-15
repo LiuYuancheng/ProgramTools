@@ -2,8 +2,7 @@
 #-----------------------------------------------------------------------------
 # Name:        udpCom.py
 #
-# Purpose:     This module will provide a UDP client + server API and a multi-thread
-#              test case which may be used for other project.
+# Purpose:     This module will provide a UDP client and server communication API.
 #
 # Author:      Yuancheng Liu
 #

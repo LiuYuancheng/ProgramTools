@@ -2,8 +2,7 @@
 #-----------------------------------------------------------------------------
 # Name:        tcpCom.py
 #
-# Purpose:     This module will provide a TCP client + server API and a multi-thread
-#              test case which may be used for other project.
+# Purpose:     This module will provide TCP client and server communication API. 
 #
 # Author:      Yuancheng Liu
 #
@@ -14,7 +13,6 @@
 
 import time
 import socket
-import threading    # create multi-thread test case.
 
 BUFFER_SZ = 4096    # TCP buffer size.
 
@@ -28,15 +26,14 @@ class tcpClient(object):
         """
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.ipAddr = ipAddr
-        self.connected = False  # connection flag.
-        # connect the client
-        self.connect()
+        self.connected = False  # connection state flag.
+        self.connect()          # connect to the server.
 
 #--tcpClient-------------------------------------------------------------------
     def connect(self, ipAddr=None):
-        """ Connect/Reconnect to the server. return connected state."""
+        """ Connect/Reconnect to the TCP server and return connected state.(T/F) """
         if self.connected:
-            self.client.close() # disonncected the existed connection.
+            self.client.close() # disconnect the existed connection.
             self.client = None  # re-init the socket for the new connection.
             self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         if not ipAddr is None: self.ipAddr = ipAddr
@@ -50,8 +47,9 @@ class tcpClient(object):
 
 #--tcpClient-------------------------------------------------------------------
     def sendMsg(self, msg=None, resp=False):
-        """ Convert the msg to bytes and send to the server. resp: server response
-            flag, will wait server's response if set to true.
+        """ Convert the msg to bytes and send it to server. 
+            - resp: server response flag, method will wait server's response and 
+                return the bytes format response if it is set to True. 
         """
         if self.connected:
             if not isinstance(msg, bytes): msg = str(msg).encode('utf-8')
@@ -62,7 +60,8 @@ class tcpClient(object):
 
 #--tcpClient-------------------------------------------------------------------
     def disconnect(self):
-        """ Send a empty message and close the socket.
+        """ Send an empty message to inform the server (avoid make server block at 
+            the recv() functiuon) and close the socket.
         """
         self.sendMsg(msg='')
         self.client.close()
@@ -70,29 +69,32 @@ class tcpClient(object):
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 class tcpServer(object):
-    """ TCP server module."""
-    def __init__(self, parent, port, connctNum=1):
+    """ TCP server module. The way to insert this module into another program 
+        by packaged it with a new thread is shown in the test case <tcpComTest.py>.
+    """
+    def __init__(self, parent, port, connectNum=1):
         """ Create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
-            init example: server = tcpServer(None, 5005, connctNum=1)
+            init example: server = tcpServer(None, 5005, connectNum=1)
         """
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server.bind(('0.0.0.0', port))
-        self.server.listen(connctNum)
+        self.server.bind(('0.0.0.0', port)) # 0.0.0.0 can host tcp from other server.
+        self.server.listen(connectNum)
         self.terminate = False  # Server terminate flag.
 
 #--tcpServer-------------------------------------------------------------------
     def serverStart(self, handler=None):
-        """ Start the TCP server to handle the incomming message."""
+        """ Start the TCP server to handle the incoming messages."""
+        print("TCP server started.")
         while not self.terminate:
-            client_socket, address = self.server.accept()
-            print("Accepted connection from %s" % str(address))
+            clientSocket, address = self.server.accept()
+            print("Accepted new connection from %s" % str(address))
             while not self.terminate:
-                request = client_socket.recv(BUFFER_SZ)
+                request = clientSocket.recv(BUFFER_SZ)
                 if request == b'': break  # client disconnected
                 msg = handler(request) if not handler is None else request
                 if not msg is None: # don't response client if the handler feed back is None
                     if not isinstance(msg, bytes): msg = str(msg).encode('utf-8')
-                    client_socket.send(msg)
+                    clientSocket.send(msg)
         self.server.close()
 
 #--tcpServer-------------------------------------------------------------------
@@ -101,61 +103,7 @@ class tcpServer(object):
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
-class testThread(threading.Thread):
-    """ Thread to test the TCP server.""" 
-    def __init__(self, threadID, name, counter):
-        threading.Thread.__init__(self)
-        self.testPort = 5005
-        self.server = tcpServer(None, self.testPort, connctNum=1)
-
-    def msgHandler(self, msg):
-        """ Test handler method to handle the incomming message."""
-        print("Incomming message: %s" %str(msg))
-        return msg
-
-    def run(self):
-        """ Main loop to handle the data feed back."""
-        print("Server thread start.")
-        self.server.serverStart(handler=self.msgHandler)
-        print("Server thread end.")
-
-    def stop(self):
-        self.server.serverStop()
-        endClient = tcpClient(('127.0.0.1', self.testPort))
-        endClient.disconnect()
-        endClient = None
-
-#-----------------------------------------------------------------------------
-#-----------------------------------------------------------------------------
-def testCase(mode):
-    print("Start TCP client-server test.")
-    testPort = 5005
-    if mode == 1:
-        print("Start the TCP Server.")
-        servThread = testThread(1, "server thread", 1)
-        servThread.start()
-        print("Start the TCP Client.")
-        ipAddr = ('127.0.0.1', testPort)
-        client = tcpClient(ipAddr)
-        for i in range(2):
-            msg = "Test data %s" %str(i)
-            result = client.sendMsg(msg, resp=True)
-            print(result)
-        print("Test reconnect.")
-        client.connect()
-        print(client.sendMsg('Re-connected', resp=True))
-        print("Test client disconnect.")
-        client.disconnect()
-        client = None
-        print("Test server stop.")
-        servThread.stop()
-        print("Test end")
-    else:
-        print("Add more other exception test here.")
-#-----------------------------------------------------------------------------
-if __name__ == '__main__':
-    testCase(1)
-
+# Test case program: tcpComTest.py
 
 
 

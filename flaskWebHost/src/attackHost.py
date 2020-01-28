@@ -42,7 +42,8 @@ def json():
 def background_process_test():
     print ("Hello")
     if request.method == 'GET':
-        pass
+        print("====")
+        print(request.form['submit_button'])
     return ("nothing")
 
 @app.route('/index', methods = ['POST', 'GET'])

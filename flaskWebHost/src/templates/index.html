@@ -1,0 +1,162 @@
+<?xml version="1.0" encording="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <title>Enhancement of OT security cyber range platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+<div class='container'>
+    <h3>Test</h3>
+        <form>
+            <a href=# id=test><button class='btn btn-default'>Test</button></a>
+        </form>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+            $('a#test').bind('click', function() {
+            $.getJSON('/background_process_test',
+                function(data) {
+                //do nothing
+            });
+            return false;
+            });
+        });
+</script>
+    
+
+<h1 style="color:white"><img src="../static/images/logoSingtel.png" usemap="#linkmap" alt="trustwave log" width="200"
+        style="float: left; padding: 10px;">
+    Enhancement of OT Security Cyber
+    Range Platform
+</h1>
+<map name="linkmap" id="linkedweb">
+    <area shape="rect" coords="0, 0, 200, 40" href="https://www.trustwave.com/en-us/"
+        alt="Jump to Trustwave offical webpage." title="Jump to Trustwave offical webpage">
+    <area shape="rect" coords="0, 40, 200, 60" href="https://www.singtel.com/" alt="Jump to Singtel offical webpage"
+        title="Jump to Singtel offical webpage">
+</map>
+
+<!-- Section 1: attack control -->
+<hr>
+<p id="firstname"> Active/De-active the attack.</p>
+
+<div id="overlay1" onclick="off1()">
+    <div id="text">back to control</div>
+    <p>
+        <img src="../static/images/attack.png" alt="Nature" border="3" style="width:100%">
+    </p>
+</div>
+
+<div id="overlay2" onclick="off2()">
+    <div id="text">back to control</div>
+    <p>
+        <img src="../static/images/mimAttack.png" alt="Nature" border="3" style="width:100%">
+    </p>
+</div>
+
+<div style="padding:20px">
+    <h2 style="color:white">Black Out Attack <small><a href="#attack1">[View attack video]</a></small></h2>
+    <form action="http://localhost:5000/index" method="post">
+        <button class="btn danger" type="submit" name="submit_button" value="startAtt1">Start attack</button>
+        <button class="btn success" type="submit" name="submit_button" value="stopAtt1">Stop attack</button>
+    </form>
+    <button class="btn info" onclick="on1()">Show detail</button>
+</div>
+
+<script>
+    function on1() {
+        document.getElementById("overlay1").style.display = "block";
+    }
+
+    function off1() {
+        document.getElementById("overlay1").style.display = "none";
+    }
+</script>
+
+<div style="padding:20px">
+    <h2 style="color:white">False Data Injection Attack <small><a href="#attack2">[View attack video]</a></small></h2>
+    <form action="http://localhost:5000/index" method="post">
+        <button class="btn danger" type="submit" name="submit_button" value="startAtt2">Start attack</button>
+        <button class="btn success" type="submit" name="submit_button" value="stopAtt2">Stop attack</button>
+    </form>
+    <button class="btn info" onclick="on2()">Show detail</button>
+
+</div>
+
+<script>
+    function on2() {
+        document.getElementById("overlay2").style.display = "block";
+    }
+
+    function off2() {
+        document.getElementById("overlay2").style.display = "none";
+    }
+</script>
+<!-- Section 2 -->
+<hr>
+<p id="firstname"> Attack situation introduction.</p>
+
+<pre style="color:white"><a id = attack1> 
+    Black Out Attack </a>: This is one attack situation of Black Energy 3 cyber attack. 
+    When the attack happens, all the PLC output coils(energy output) will be turn 
+    off. The system HMI center energy may detect the exception situation and the 
+    user can not recover to normal situation by using the SCADA PC. ( The SCADA HMI 
+    shows every thing normal when the user do recover action but actually all the PLC 
+    related output still keep turned off)
+
+</pre>
+
+<video width="640" height="480" controls>
+    <source src="../static/images/blackoutAtt.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+<!--
+<object classid="CLSID:CAFEEFAC-0014-0002-0000-ABCDEFFEDCBA" width="640" height="480">
+    <param name="type" value="video/x-msvideo">
+    <param name="URL" value="../static/images/black_out_attack.avi">
+    <param name="uiMode" value="full">
+    <param name="autoStart" value="false">
+    <embed width="640" height="480" type="video/x-msvideo" src="../static/images/black_out_attack.avi" control="All" loop="false" autostart="false"
+    pluginspage="https://add0n.com/the-media-player.html"
+    >
+</object>
+-->
+<pre style="color:white"><a id = attack2> 
+    False Data Injection Attack </a>: When the attack happens, the reversed user control 
+    commend will be injected into the system and the exception situation is not 
+    detectable from the SCADA HMI system. (When the user try to turn on the Runway 
+    lights in the airport, all the lights will be turn off.)
+
+</pre>
+
+<video width="640" height="480" controls>
+    <source src="../static/images/falseDataAtt.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+
+
+<!--<object width="360" height="240">
+    <param name="movie" value="https://www.youtube.com/watch?v=lTwsDLO3C44&t=3s">
+    <param name="allowFullScreen" value="false">
+    <param name="allowScriptAccess" value="always">
+    <embed src="https://www.youtube.com/watch?v=lTwsDLO3C44&t=3s"  type="application/x-shockwave-flash" allowFullScreen="false" allowScriptAccess="always" width="640" height="480"
+    >
+</object>-->
+
+<hr>
+<iframe width="420" height="315"
+    src="https://www.youtube.com/watch?v=lTwsDLO3C44&t=3s">
+</iframe>
+
+<a href="mailto:liu_yuan_cheng@hotmail.com?subject=Report A problem&body=found a bug"> Report a problem </a>
+</body>
+
+</html>

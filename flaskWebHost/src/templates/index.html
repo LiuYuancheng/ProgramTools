@@ -8,29 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
-<body>
-
-<div class='container'>
-    <h3>Test</h3>
-        <form>
-            <a href=# id=test><button class='btn btn-default'>Test</button></a>
-        </form>
-
-</div>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type=text/javascript>
-        $(function() {
-            $('a#test').bind('click', function() {
-            $.getJSON('/background_process_test',
-                function(data) {
-                //do nothing
-            });
-            return false;
-            });
-        });
-</script>
-    
+<body style="background-image: url('../static/images/bgimg3.png');">
 
 <h1 style="color:white"><img src="../static/images/logoSingtel.png" usemap="#linkmap" alt="trustwave log" width="200"
         style="float: left; padding: 10px;">
@@ -65,8 +43,9 @@
 <div style="padding:20px">
     <h2 style="color:white">Black Out Attack <small><a href="#attack1">[View attack video]</a></small></h2>
     <form action="http://localhost:5000/index" method="post">
-        <button class="btn danger" type="submit" name="submit_button" value="startAtt1">Start attack</button>
-        <button class="btn success" type="submit" name="submit_button" value="stopAtt1">Stop attack</button>
+
+        <a href=# id=startAtt1><button class="btn danger">Start attack</button></a>
+        <a href=# id=stopAtt1><button class="btn success">Stop attack</button></a>
     </form>
     <button class="btn info" onclick="on1()">Show detail</button>
 </div>
@@ -84,8 +63,8 @@
 <div style="padding:20px">
     <h2 style="color:white">False Data Injection Attack <small><a href="#attack2">[View attack video]</a></small></h2>
     <form action="http://localhost:5000/index" method="post">
-        <button class="btn danger" type="submit" name="submit_button" value="startAtt2">Start attack</button>
-        <button class="btn success" type="submit" name="submit_button" value="stopAtt2">Stop attack</button>
+        <a href=# id=startAtt2><button class="btn danger">Start attack</button></a>
+        <a href=# id=stopAtt2><button class="btn success">Stop attack</button></a>
     </form>
     <button class="btn info" onclick="on2()">Show detail</button>
 
@@ -100,6 +79,46 @@
         document.getElementById("overlay2").style.display = "none";
     }
 </script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    $(function() {
+        // Start the black out attack.
+        $('a#startAtt1').bind('click', function() {
+        $.getJSON('/startAtt1',
+            function(data) {
+            //do nothing
+        });
+        return false;
+        });
+        // Stop the black out attack.
+        $('a#stopAtt1').bind('click', function() {
+        $.getJSON('/stopAtt1',
+            function(data) {
+            //do nothing
+        });
+        return false;
+        });
+        // Start the false data injection attack.
+        $('a#startAtt2').bind('click', function() {
+        $.getJSON('/startAtt2',
+            function(data) {
+            //do nothing
+        });
+        return false;
+        });
+        // Stop the false data injection attack.
+        $('a#stopAtt2').bind('click', function() {
+        $.getJSON('/stopAtt2',
+            function(data) {
+            //do nothing
+        });
+        return false;
+        });
+    });
+</script>
+
+
 <!-- Section 2 -->
 <hr>
 <p id="firstname"> Attack situation introduction.</p>

@@ -38,12 +38,41 @@ def json():
     return render_template('index.html')
 
 #background process happening without any refreshing
-@app.route('/background_process_test')
-def background_process_test():
-    print ("Hello")
+@app.route('/startAtt1')
+def startAtt1():
+    print ("Start the black out attack.")
     if request.method == 'GET':
-        print("====")
-        print(request.form['submit_button'])
+        urlStr = "http://"+ACT_IP[0]+":"+str(ACT_IP[1])+"/BE3"
+        requests.get(url = urlStr) 
+    return ("nothing")
+
+#background process happening without any refreshing
+@app.route('/stopAtt1')
+def stopAtt1():
+    print ("Stop the black out attack.")
+    if request.method == 'GET':
+        msg = 'A;0'
+        crtClient.sendto(msg.encode('utf-8'), SEV_IP)
+        return redirect(url_for('index'))
+    return ("nothing")
+
+@app.route('/startAtt2')
+def startAtt2():
+    print ("Start the false data injection attack.")
+    if request.method == 'GET':
+        msg = 'A;2'
+        crtClient.sendto(msg.encode('utf-8'), SEV_IP)
+        return redirect(url_for('index'))
+    return ("nothing")
+
+#background process happening without any refreshing
+@app.route('/stopAtt2')
+def stopAtt2():
+    print ("top the false data injection attack.")
+    if request.method == 'GET':
+        msg = 'A;0'
+        crtClient.sendto(msg.encode('utf-8'), SEV_IP)
+        return redirect(url_for('index'))
     return ("nothing")
 
 @app.route('/index', methods = ['POST', 'GET'])

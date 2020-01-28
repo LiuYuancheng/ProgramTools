@@ -15,7 +15,7 @@ This project is used to provide several tools program/frame work for project dev
 
    [socketComm]: socketComm
 
-3. 
+3. flask web server to host a webpage.
 
 ------
 

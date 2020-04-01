@@ -2,8 +2,8 @@
 #-----------------------------------------------------------------------------
 # Name:        serialCom.py
 #
-# Purpose:     This module will packaged the python built-in serial module to 
-#              provide a automatically serial port serach and connection 
+# Purpose:     This module will inheritance the python built-in serial module 
+#              with automatically serial port serach and connection function.
 #
 # Author:      Yuancheng Liu
 #
@@ -11,22 +11,35 @@
 # Copyright:   
 # License:     
 #-----------------------------------------------------------------------------
+
 import os
 import sys
 import glob
-import serial
+from serial import Serial, SerialException
+
+BYTE_SIZE = 8
+PARITY = 'N'
+STOP_BIT = 1
+TIME_OUT = 1
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
-class serialCom(object):
+class serialCom(Serial):
+    """ The serialCom inheritance from python built-in serial.Serial class. Call 
+        read(int *) or write(bytes *) to read number of bytes from the serial
+        port or send bytes to the port. 
+    """
     def __init__(self, parent, serialPort=None, baudRate=9600):
-        self.serComm = None
-        conIdx = 0     # port index used for connection.
-        # Automatically find the serial port which can read
+        """ Init the serial comunication and if serialPort is None the program 
+            will automatically find the port which can connected. For windows we 
+            use the last port(idx=-1) in the list and in linux we use first port(idx=0)  
+        """
+        # Automatically find the serial port which can read and write.
         if serialPort is None:
+            conIdx = 0  # port index used for connection.
             if sys.platform.startswith('win'):
                 ports = ['COM%s' % (i + 1) for i in range(256)]
-                self.conIdx = -1
+                conIdx = -1
             elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
                 # this excludes your current terminal "/dev/tty"
                 ports = glob.glob('/dev/tty[A-Za-z]*')
@@ -34,32 +47,22 @@ class serialCom(object):
                 ports = glob.glob('/dev/tty.*')
             else:
                 raise EnvironmentError('Serial Port comm connection error: Unsupported platform.')
-            portList = []
+            portList = []   # port list can used for connection.
             for port in ports:
                 # Check whether the ports can be open.
                 try:
-                    s = serial.Serial(port)
+                    s = Serial(port)
                     s.close()
                     portList.append(port)
-                except (OSError, serial.SerialException):
+                except (OSError, SerialException):
                     pass
-            print(('COM connection: the serial port can be used :%s' % str(portList)))
+            print(('serialCom: the serial ports can be used : %s' % str(portList)))
             serialPort = portList[conIdx]
-        # Conne
+        # Call the parent __init__() to connect to the port.
         try:
-            self.serComm = serial.Serial(serialPort, baudRate, 8, 'N', 1, timeout=1)
+            super().__init__(serialPort, baudRate, BYTE_SIZE, PARITY, STOP_BIT, timeout=TIME_OUT)
         except:
-            print("Serial connection: serial port open error.")
-            return None
-
-#-----------------------------------------------------------------------------
-    def readComm(self, byteNum=100, decodeType=None):
-        msg = self.serComm.read(byteNum)
-        if decodeType: msg.decode(decodeType)
-
-#-----------------------------------------------------------------------------
-    def wirteComm(self, msgStr, encodeType=None):
-        self.serComm.write(msgStr.encode(encodeType))
+            print("serialCom: serial port open error.")
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
@@ -69,13 +72,11 @@ def testCase(testMode):
     if testMode == 1:
         print("Test Case 1: test connect to the un-readable port.")
         connector = serialCom(None,serialPort="COM_NOT_EXIST", baudRate=115200)
-        result = 'Pass' if connector is None else 'Fail'
-        print(" - Test result: %s \n" %result)
 
     print("Test Case 2: test connect to com port.")
     connector = serialCom(None, baudRate=115200)
-    connector.wirteComm('Test String', encodeType='utf-8')
-    msg = connector.readComm(byteNum=1024, decodeType='utf-8')
+    connector.write('Test String'.encode('utf-8'))
+    msg = connector.read(128)
     print("Read message from the com: %s" %str(msg))
 
 #-----------------------------------------------------------------------------

@@ -27,7 +27,7 @@ TIME_OUT = 1
 class serialCom(Serial):
     """ The serialCom inheritance from python built-in serial.Serial class. Call 
         read(int *) or write(bytes *) to read number of bytes from the serial
-        port or send bytes to the port. 
+        port or send bytes to the port. Call close() to close the port.
     """
     def __init__(self, parent, serialPort=None, baudRate=9600):
         """ Init the serial comunication and if serialPort is None the program 
@@ -46,8 +46,8 @@ class serialCom(Serial):
             elif sys.platform.startswith('darwin'):
                 ports = glob.glob('/dev/tty.*')
             else:
-                raise EnvironmentError('Serial Port comm connection error: Unsupported platform.')
-            portList = []   # port list can used for connection.
+                raise EnvironmentError('serialCom: Serial Port comm connection error: Unsupported platform.')
+            portList = []   # port list can be used for connection.
             for port in ports:
                 # Check whether the ports can be open.
                 try:

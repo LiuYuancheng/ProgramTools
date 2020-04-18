@@ -3,7 +3,7 @@
 # Name:        serialCom.py
 #
 # Purpose:     This module will inheritance the python built-in serial module 
-#              with automatically serial port serach and connection function.
+#              with automatically serial port search and connection function.
 #
 # Author:      Yuancheng Liu
 #

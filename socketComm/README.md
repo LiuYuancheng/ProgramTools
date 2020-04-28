@@ -37,6 +37,7 @@ snap7 for PLC
 | M2PLC221.py   | python2.7/3.7 | This module is used to connect to the Schneider M2xx PLC.    |
 | S7PLC1200.py  | python3.7     | This module is used to connect to the siemens s7-1200 PLC.   |
 | serialCom.py  | python3.7     | This module will inheritance the python built-in serial module with automatically serial port search and connection function. |
+| zmqCom.py     | python3.7     | This module will provide ZMQ router-dealer communication module. |
 
 
 

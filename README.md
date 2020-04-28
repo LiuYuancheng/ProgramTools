@@ -17,6 +17,8 @@ This project is used to provide several tools program/frame work for project dev
 
 3. flask web server to host a webpage.
 
+4. Knowledge Sharing documents.  
+
 ------
 
 > Last edit by LiuYuancheng(liu_yuan_cheng@hotmail.com) at 14/01/2020

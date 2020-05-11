@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterViewAnimator;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+    // Load a background for the current screen from a drawable resource
+    getWindow().setBackgroundDrawableResource(R.drawable.ic_launcher_background) ;
+
+    // Set the Activity title by getting a string from the Resources object, because
+    //  this method requires a CharSequence rather than a resource ID
+    getWindow().setTitle(getResources().getText(R.string.app_name));
+
+
     }
 
     /** Called when the user taps the Send button */

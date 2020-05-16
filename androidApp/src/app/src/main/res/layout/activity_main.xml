@@ -29,4 +29,5 @@
         android:text="@string/button_send"
         app:layout_constraintStart_toEndOf="@+id/editText2"
         tools:layout_editor_absoluteY="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

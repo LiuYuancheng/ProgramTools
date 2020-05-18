@@ -30,4 +30,30 @@
         app:layout_constraintStart_toEndOf="@+id/editText2"
         tools:layout_editor_absoluteY="16dp" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:onClick="onActivityResult"
+        android:text="Take a Photo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="121dp"></Button>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="371dp"
+        android:layout_height="539dp"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

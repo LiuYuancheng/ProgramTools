@@ -19,7 +19,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
+        String consumerKey = BuildConfig.CONSUMER_KEY;
+        String consumerSecret = BuildConfig.CONSUMER_SECRET;
+        textView.setText(consumerKey+':'+consumerSecret);
 
     }
 }

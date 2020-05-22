@@ -26,6 +26,7 @@ import java.security.SecureRandom;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 
+import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -91,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                         .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
                         .build());
         SecretKey keyStoreKey = (SecretKey) keyStore.getKey("key1", null);
+
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        cipher.init(Cipher.ENCRYPT_MODE, keyStoreKey);
+
 
         byte encoded[] = keyStoreKey.getEncoded();
         //String stringKey = Base64.getEncoder().encodeToString(encoded);

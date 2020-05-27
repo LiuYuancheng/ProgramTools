@@ -8,78 +8,75 @@
     <title>CSS Image Map Example</title>
     <style type="text/css">
         #theImg {
-            width: 1000px;
+            width: 1200px;
             height: 750px;
-            background-image: url(images/map.png) no-repeat 0 0;
-            position: relative;
-            border: 1px solid #000000;
+            margin: 0 auto;
         }
 
-        ul#continents1,
-        ul#continents2,
-        ul#continents3 {
+        ul#theImg1{
             list-style: none;
-            width: 580px;
-            height: 268px;
+            width: 1200px;
+            height: 675px;
             position: relative;
             background: url(img/gv_dashboard.png) no-repeat 0 0;
         }
 
-        a#theImg {
-            position: ansolute;
-            text-indent: -1000em;
+        ul#theImg1 li{
+            position: absolute; 
+            text-indent: -5000px;
         }
 
-        #theImg a:hover {
+        .leftpart{
+            width: 500px;
+            height: 300px;
+            top: 2px;
+            left: 0px;
+        }
+
+        .rightpart{
+            width: 500px;
+            height: 300px;
+            top: 2px;
+            left: 501px;
+        }
+
+
+        ul#theImg1 li a {
+            display: block;
+            outline: none;
+            height: 100%;
+        }
+
+
+        ul#theImg1 a:hover {
+            background-color: #ffffff;
+            opacity: 0.3;
             border: 1px solid #ffffff;
         }
 
-        #ss a {
-            top: 0px;
-            left: 5px;
-            width: 160px;
-            height: 450px;
+        ul#theImg1 li a:hover {
+	        transition: .5s ease;
         }
 
-        #gn a {
-            top: 226px;
-            left: 15px;
-            width: 70px;
-            height: 90px;
+        ul#theImg1 li.leftpart a:hover {
+	        background-position: -226px -273px;
         }
 
-        #ib a {
-            top: 225px;
-            left: 85px;
-            width: 120px;
-            height: 180px;
+
+        ul#theImg1 li.rightpart a:hover {
+	        background-position: -700px -273px;
         }
 
-        #iTea1 a {
-            top: 100px;
-            left: 32px;
-            width: 123px;
-            height: 125px;
-        }
-
-        #iTea2 a {
-            top: 225px;
-            left: 375px;
-            width: 123px;
-            height: 115px;
-        }
     </style>
 </head>
 
 <body>
-    <a ref = "http://www.htmldrive.net/items/show/704/pure-CSS-Image-Maps">refrence linK </a>
+    <h1> CSS Image Map Example</h1>
+    <h3> We follow this <a href="http://www.htmldrive.net/items/show/704/pure-CSS-Image-Maps">World Map Example</a> to made this test webpage</h3>
     <div id="theImg">
-        <ul id="continents1">
-            <li id="ss"> <a href="https://github.com/skyxujia/QSG-Manager" title="title1"> title1 </a></li>
-            <li id="gn"> <a href="https://github.com/skyxujia/QSG-Manager" title="title2"> title2 </a></li>
-            <li id="ib"> <a href="https://github.com/skyxujia/QSG-Manager" title="title3"> title3 </a></li>
-            <li id="iTea1"> <a href="https://github.com/skyxujia/QSG-Manager" title="title4"> title4 </a></li>
-            <li id="iTea2"> <a href="https://github.com/skyxujia/QSG-Manager" title="title5"> title5 </a></li>
+        <ul id="theImg1">
+            <li class="leftpart"> <a href="https://github.com/skyxujia/QSG-Manager" title="title1"> title1 </a></li>
+            <li class="rightpart"> <a href="https://github.com/skyxujia/QSG-Manager" title="title2"> title2 </a></li>
         </ul>
     </div>
 </body>

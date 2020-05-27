@@ -26,20 +26,54 @@
             text-indent: -5000px;
         }
 
-        .leftpart{
-            width: 500px;
-            height: 300px;
-            top: 2px;
+        .logo{
+            width: 45px;
+            height: 45px;
+            top: 0px;
             left: 0px;
         }
 
-        .rightpart{
-            width: 500px;
-            height: 300px;
-            top: 2px;
-            left: 501px;
+        .setupbar{
+            width: 45px;
+            height: 625px;
+            top: 46px;
+            left: 0px;
         }
 
+        .guidbar{
+            width: 1150px;
+            height: 45px;
+            top: 0px;
+            left: 46px;
+        }
+
+        .timeArea{
+            width: 465px;
+            height: 50px;
+            top: 50px;
+            left: 50px;
+        }
+
+        .connectionArea{
+            width: 465px;
+            height: 165px;
+            top: 96px;
+            left: 50px;
+        }
+
+        .exceptionArea{
+            width: 465px;
+            height: 105px;
+            top: 265px;
+            left: 50px;
+        }
+
+        .mapArea{
+            width: 610px;
+            height: 360px;
+            top: 50px;
+            left: 520px;
+        }
 
         ul#theImg1 li a {
             display: block;
@@ -51,21 +85,49 @@
         ul#theImg1 a:hover {
             background-color: #ffffff;
             opacity: 0.3;
-            border: 1px solid #ffffff;
+            border: 1px solid #25cc4f;
         }
 
         ul#theImg1 li a:hover {
 	        transition: .5s ease;
         }
 
-        ul#theImg1 li.leftpart a:hover {
-	        background-position: -226px -273px;
+        ul#theImg1 li.guidbar a:hover {
+	        background-position: -0px -0px;
         }
-
 
         ul#theImg1 li.rightpart a:hover {
 	        background-position: -700px -273px;
         }
+
+        ul#theImg1 li a span {
+            display: none;
+        }
+
+        ul#theImg1 li a:hover span {
+            display: block;
+        }
+
+        
+        ul#theImg1 li a:hover span {
+            display: block;
+            padding: 5px;
+            width: 150px;
+            background: #000;
+            position: relative;
+            top: 50%;
+            font: 11px Arial, Helvetica, sans-serif;
+            opacity: .75;
+            filter:alpha(opacity=75);
+            color: #25cc4f;
+        }
+
+        ul#theImg1 li a:hover span strong {
+                display: block;
+                margin-bottom: 2px;
+                font-size: 12px;
+                text-decoration: underline;
+            }
 
     </style>
 </head>
@@ -75,7 +137,71 @@
     <h3> We follow this <a href="http://www.htmldrive.net/items/show/704/pure-CSS-Image-Maps">World Map Example</a> to made this test webpage</h3>
     <div id="theImg">
         <ul id="theImg1">
-            <li class="leftpart"> <a href="https://github.com/skyxujia/QSG-Manager" title="title1"> title1 </a></li>
+
+            <li class="logo"> 
+                <a href="https://github.com/skyxujia/QSG-Manager" title="Grafana Logo "> Grafana Logo 
+                <span>
+                    <strong> The Grafana Dashboard Logo</strong>
+                    This logo is not editable when we are using the free version.
+                </span>
+            </a>
+            </li>
+
+            <li class="setupbar"> 
+                <a href="https://github.com/skyxujia/QSG-Manager" title="Dashboard Global Setup Bar "> Dashboard Setup Bar
+                <span>
+                    <strong> The Grafana user Setup bar</strong>
+                    The user and global value setup part will show in this bar.
+                </span>
+            </a>
+            </li>
+
+            
+            <li class="guidbar"> 
+                <a href="https://github.com/skyxujia/QSG-Manager" title="Dashboard guid Bar "> Dashboard Guid Bar
+                <span>
+                    <strong> Inidvidual dashboard guid bar</strong>
+                    The Individual dashboard update setting bar.
+                </span>
+            </a>
+            </li>
+
+            <li class="timeArea"> 
+                <a href="https://github.com/skyxujia/QSG-Manager" title=" Trustwave Logo and Time "> Trustwave Logo and Time 
+                <span>
+                    <strong> Company logo and time.</strong>
+                    logo and time display area.
+                </span>
+            </a>
+            </li>
+
+            <li class="connectionArea"> 
+                <a href="https://github.com/skyxujia/QSG-Manager" title=" Deployed Gateway information "> Gateway connection information
+                <span>
+                    <strong> Gateway connection information.</strong>
+                    Deployed gateway connection dashboard list.
+                </span>
+            </a>
+            </li>
+
+            <li class="exceptionArea"> 
+                <a href="https://github.com/skyxujia/QSG-Manager" title=" Data Exception Information "> Gateway communication data exception information
+                <span>
+                    <strong> Gateway data exception list.</strong>
+                    Gateway data exception list.
+                </span>
+            </a>
+            </li>
+
+            <li class="mapArea"> 
+                <a href="https://github.com/skyxujia/QSG-Manager" title=" Gateway Topographic Map "> Gateway Topographic Map
+                <span>
+                    <strong> Gateway Topographic Map.</strong>
+                    QSG-Manager will collect and monitor the internal status of our gateway devices and visualize all the data
+                </span>
+            </a>
+            </li>
+
             <li class="rightpart"> <a href="https://github.com/skyxujia/QSG-Manager" title="title2"> title2 </a></li>
         </ul>
     </div>

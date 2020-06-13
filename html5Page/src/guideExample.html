@@ -8,6 +8,60 @@
         body{
             font: 12pt Verdana, Arial, Georgia, sans-serif;
         }
+        /*Horizontal guide area*/
+        #header {
+            width: auto;
+        }
+
+        #logo {
+            float: left;
+        }
+
+        #nav_h{
+            float: left;
+            margin: 10px 0px 0px 0px;
+            width: 400px;
+            background-color: #628794;
+            color: #ffffff;
+        }
+
+        #nav_h a {
+            text-decoration: none;
+        }
+
+        #nav_h ul{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            display: inline;
+        }
+
+        #nav_h li{
+            display: inline;
+            line-height: 1.8em;
+        }
+
+        #nav_h ul li a:link, #nav_h ul li a:visited{
+            font-size: 10pt;
+            font-weight: bold;
+            padding: 3px 0px 3px 3px;
+            text-decoration: none;
+            background-color: #628794;
+            color: #ffffff;
+
+        }
+        /*use hover to change the block color when the user's point move onto it.*/
+        #nav_h ul li a:hover, #nav_h ul li a:active{
+            font-size: 10pt;
+            font-weight: bold;
+            padding: 3px 0px 3px 3px;
+            text-decoration: none;
+            background-color: #6cac46;
+            color: #000000;
+        }
+
+
+        /* Use ul and li to creat ethe vertial guide area*/
         #nav {
             width: 150px;
             float: left;
@@ -89,29 +143,53 @@
 
 <body>
 
-</body>
-    <div id="nav">
-        <ul>
-            <li> <a href="#">Mission</a></li>
-            <li> <a href="#">History</a></li>
-            <li> <a href="#">Executive Team</a></li>
+    <div id="header">
+        <div id="logo">
+            <img src="img/map-color.png" usemap="#linkmap" alt="trustwave log" width="50"
+                style="float: left; padding: 10px;">
+        </div>
+    
+    
+        <div id="nav_h">
+            <ul>
+                <li> <a href="#">About us </a></li>
+                <li> <a href="#">Products</a></li>
+                <li> <a href="#">Support </a></li>
+                <li> <a href="#">Press</a></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+
+    <div>
+        <div id="nav">
+            <ul>
+                <li> <a href="#">Mission</a></li>
+                <li> <a href="#">History</a></li>
+                <li> <a href="#">Executive Team</a></li>
                 <ul>
                     <li> <a href="#">&raquo CEO </a></li>
                     <li> <a href="#">&raquo CFO </a></li>
                     <li> <a href="#">&raquo COO </a></li>
                     <li> <a href="#">&raquo Other Minions </a></li>
                 </ul>
-            <li> <a href="#">Contack us</a></li>
-        </ul>
-    </div>
-
-    <div id="content"> 
-        <h1> About us </h1> 
-        <ul>
-            <li> <a href="#">Mission</a>: detail information</li>
-            <li> <a href="#">History</a>: detail information</li>
-            <li> <a href="#">Executive Team</a>: detail information</li>
-            <li> <a href="#">Contack us</a>: detail information</li>
-        </ul>
-    </div>
+                <li> <a href="#">Contack us</a></li>
+            </ul>
+        </div>
+    
+        <div id="content">
+            <h1> About us </h1>
+            <ul>
+                <li> <a href="#">Mission</a>: detail information</li>
+                <li> <a href="#">History</a>: detail information</li>
+                <li> <a href="#">Executive Team</a>: detail information</li>
+                <li> <a href="#">Contack us</a>: detail information</li>
+            </ul>
+        </div>
+    <div>
+    
+</body>
+    
 </html>

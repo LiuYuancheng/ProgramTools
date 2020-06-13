@@ -27,13 +27,67 @@
             text-decoration: none;
         }
 
+        #nav ul {
+            list-style: none;
+            margin: 12px 0px, 0px, 0px;
+            padding: 0px;
+        }
 
+        #nav ul li {
+            border-bottom: 1px solid #ffffff;
+        }
+        
+        #nav ul li a:link, #nav ul li a:visited{
+            font-size: 10pt;
+            font-weight: bold;
+            display: block;
+            padding: 3px 0px 3px 3px;
+            background-color: #628794;
+            color: #ffffff;
+
+        }
+        /*use hover to change the block color when the user's point move onto it.*/
+        #nav ul li a:hover, #nav ul li a:active{
+            font-size: 10pt;
+            font-weight: bold;
+            display: block;
+            padding: 3px 0px 3px 3px;
+            background-color: #6cac46;
+            color: #000000;
+        }
+
+        #nav ul ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #nav ul ul li {
+            border-bottom: none;
+        }
+
+        #nav ul ul li a:link, #nav ul ul li a:visited{
+            font-size: 8pt;
+            font-weight: bold;
+            display: block;
+            padding: 3px 0px 3px 18px;
+            background-color: #628794;
+            color: #ffffff;
+        }
+
+        #nav ul ul li a:hover, #nav ul ul li a:active{
+            font-size: 8pt;
+            font-weight: bold;
+            display: block;
+            padding: 3px 0px 3px 28px; /* shift the word to right a little bit.*/
+            background-color: #6cac46;
+            color: #000000;
+        }
 
     </style>
 </head>
 
-<body>
 
+<body>
 
 </body>
     <div id="nav">
@@ -41,6 +95,12 @@
             <li> <a href="#">Mission</a></li>
             <li> <a href="#">History</a></li>
             <li> <a href="#">Executive Team</a></li>
+                <ul>
+                    <li> <a href="#">&raquo CEO </a></li>
+                    <li> <a href="#">&raquo CFO </a></li>
+                    <li> <a href="#">&raquo COO </a></li>
+                    <li> <a href="#">&raquo Other Minions </a></li>
+                </ul>
             <li> <a href="#">Contack us</a></li>
         </ul>
     </div>

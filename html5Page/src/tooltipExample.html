@@ -9,6 +9,37 @@
     a {
         text-decoration: none;
         font-weight: bold;
+        color: #7a7abf;
+    }
+
+    #hide_e {
+        display: none;
+    }
+
+    #elevation {
+        display: none;
+    }
+
+    #hide_p {
+        display: none;
+    }
+
+    #photos {
+        display:none;
+    }
+
+    #show_e {
+        display:block;
+    }
+
+    #show_p{
+        display:block;
+    }
+    .fakelink{
+        cursor:pointer;
+        text-decoration: none;
+        font-weight: bold;
+        color:#E03A3e;
     }
 
     a.tip {
@@ -30,12 +61,38 @@
         position: absolute;
         top: 20px;
         left: 25px;
-        width: 150px;
+        width: 250px; /* set the default to 150 px*/
         padding: 3px;
         border: 1px solid #000000;
         background-color: #dddddd;
         color: #000;
     }
+
+    a.more {
+        position: relative;
+        z-index: 24px;
+    }
+
+    a.more:hover{
+        z-index: 25px;
+    }
+
+    a.more span{
+        display: none;
+    }
+
+    a.more:hover span{
+        font-weight: bold;
+        display: block;
+        position: absolute;
+        top: -35px;
+        width: 400px;
+        padding: 3px;
+        color:#ff0000;
+        background-color: #dddddd; /*The back ground color will use transparent as default*/
+        line-height: 1em;
+    }
+
     </style>
 </head>
 
@@ -43,7 +100,49 @@
     <h1> Tooltip Example </h1>   
     <p>  <img src="img/map-color.png" usemap="#linkmap" alt="trustwave log" width="150"
         style="float: left; padding: 10px;"> </p>
-    <a class="tip" href="#"> Move mouse on the Tooltip link <span>Pop-up the link here. </span> </a>
+    <br>
+
+    <h4 onclick="this.style.color='red';"> 0 Turn text color from black to red when clicked </h4> 
+
+
+    <h4> 1. Mouse move on link and pop-up example: </h4>
+    <a class="tip" href="#"> Move mouse on the Tooltip link <span>Pop-up the link here 1. </span> </a>
+
+    <h4> 2. Mouse move on link and raise a message box </h4>
+    <a class="more" href="#"> Move mouse on the Tooltip link <span>Pop-up the link here 2. </span> </a>
+
+    <h4> 3. Fake link mouse event example </h4>
+
+    <div class="fakelink" 
+        id ="show_e"
+        onclick="this.style.display='none';
+        document.getElementById('hide_e').style.display='block'; 
+        document.getElementById('elevation').style.display='inline';"> &raquo; Show Elevation</div>  
+
+
+    <div class="fakelink" 
+        id ="hide_e"
+        onclick="this.style.display='none';
+        document.getElementById('show_e').style.display='block'; 
+        document.getElementById('elevation').style.display='none';"> &raquo; Hide Elevation</div>  
+
+    <div id="elevation"> This is the elevation link </div> 
+
+    <div class="fakelink" 
+        id ="show_p"
+        onclick="this.style.display='none';
+        document.getElementById('hide_p').style.display='block'; 
+        document.getElementById('photos').style.display='inline';"> &raquo; Show Photos from the Top of link</div>  
+
+    <div class="fakelink" 
+        id ="hide_p"
+        onclick="this.style.display='none';
+        document.getElementById('show_p').style.display='block'; 
+        document.getElementById('photos').style.display='none';"> &raquo; Show Photos </div>  
+
+    <div id="photos"> <img src="img/map.png" usemap="#linkmap" alt="trustwave log" width="300"
+        style="margin-right: 12px; border: 1px solid #000000;">
+    </div>
 
 </body>
 

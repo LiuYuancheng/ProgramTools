@@ -1,0 +1,50 @@
+<?xml version="1.0" encording="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <title> Tooltip Example Page</title>
+    <style type="text/css">
+    a {
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a.tip {
+        position:relative;
+        z-index: 24px;
+    }
+
+    a.tip:hover{
+        z-index: 25px;
+    }
+
+    a.tip span{
+        display: none;
+    }
+
+    a.tip:hover span {
+        font-weight: normal;
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 25px;
+        width: 150px;
+        padding: 3px;
+        border: 1px solid #000000;
+        background-color: #dddddd;
+        color: #000;
+    }
+    </style>
+</head>
+
+<body> 
+    <h1> Tooltip Example </h1>   
+    <p>  <img src="img/map-color.png" usemap="#linkmap" alt="trustwave log" width="150"
+        style="float: left; padding: 10px;"> </p>
+    <a class="tip" href="#"> Move mouse on the Tooltip link <span>Pop-up the link here. </span> </a>
+
+</body>
+
+</html> 

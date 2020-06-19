@@ -2,3 +2,46 @@ body {
     margin: 0;
     padding: 0;
 }
+
+#header {
+    float: left;
+    width: 100%;
+    background-color: #7152F4;
+}
+
+#footer {
+    float: left;
+    width: 100%;
+    background-color: #7152F4;
+}
+
+#wrapper {
+    float: left;
+    padding-left: 200px;
+    padding-right: 125px;
+}
+
+#left_side {
+    position: relative;
+    float: left;
+    width: 200px;
+    background-color: #52f471;
+    right: 200px;
+    margin-left: -100%;
+}
+
+#right_side {
+    position: relative;
+    float: left;
+    width: 200px;
+    background-color: #f452d5;
+    right: 200px;
+    margin-right: -100%;
+}
+
+#content_area {
+    position: relative;
+    float: left;
+    background-color: #ffffff;
+    width:100%;
+}

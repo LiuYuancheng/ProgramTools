@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    min-width: 525px;
 }
 
 #header {
@@ -13,6 +14,10 @@ body {
     float: left;
     width: 100%;
     background-color: #7152F4;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
 }
 
 #wrapper {
@@ -28,6 +33,8 @@ body {
     background-color: #52f471;
     right: 200px;
     margin-left: -100%;
+    padding-bottom: 1920px; 
+    margin-bottom: -1920px;
 }
 
 #right_side {
@@ -37,6 +44,8 @@ body {
     background-color: #f452d5;
     right: 200px;
     margin-right: -100%;
+    padding-bottom: 1920px; 
+    margin-bottom: -1920px;
 }
 
 #content_area {
@@ -44,4 +53,34 @@ body {
     float: left;
     background-color: #ffffff;
     width:100%;
+    padding-bottom: 1920px; 
+    margin-bottom: -1920px;
 }
+
+#left_side ul{
+    list-style: none;
+    margin: 12px 0px 0px 12px;
+    padding: 0px;
+}
+
+#left_side li a:link, #nav li a:visited{
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 3px 0px 3px 3px;
+    color: #000000;
+    text-decoration: none;
+    display: block;
+}
+
+#left_side li a:hover, #nav li a:active{
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 3px 0px 3px 3px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+

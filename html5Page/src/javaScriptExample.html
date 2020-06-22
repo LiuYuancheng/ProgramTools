@@ -5,6 +5,21 @@
 
 <head>
     <title> JavaScript Example</title>
+    <script type="text/javascript">
+    function getQuote(){
+        var quote = new Array(4)
+        quote[0] = "Quote string idx = 0";
+        quote[1] = "Quote string idx = 1"; 
+        quote[2] = "Quote string idx = 2"; 
+        quote[3] = "Quote string idx = 3"; 
+
+        i = Math.floor(Math.random()*quote.length);
+
+        document.write("<dl style='background-color: lightpink'> \n");
+        document.write("<dt>"+"\"<em>"+quote[i]+"</em>\" </dt>\n");
+        document.write("</dl>")
+    }
+    </script>
 </head>
 
 <body>
@@ -13,6 +28,26 @@
     <script type="text/javascript">
         document.write('<p> This text comes from the javascript </p>');
     </script>
+    <p> Show the random number: </p>
+    <script type="text/javascript">
+        getQuote();
+    </script>
+    
+    <p> Mouse move over example</p>
+    
+    <a href="imageMap.html"
+        onmouseover="javascript:document.button_img.src='img/keyExOn.gif'"
+        onmouseout="javascript:document.button_img.src='img/keyExStart.png'">
+        <img name="button_img" src="img/keyExStart.png" width="80" height="50" alt="photo" />
+    </a>
+
+    <p> Mouse click Image example </p>
+    <dl><img name="map_img" src="img/map-color.png" alt="photo" /></dl>
+    <dt>
+        <a href="#" onclick="javascript:document.map_img.src='img/map.png'" >
+            <img src="img/map-color.png" width="104" height="104" style="padding: 4px; border: 0px" alt="photo" />
+        </a>    
+    <dt>    
 </body> 
 
-
+</html>

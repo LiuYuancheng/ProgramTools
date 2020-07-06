@@ -14,12 +14,42 @@
             text-align: left;
             clear: left;
         }
+        .formfield{
+            font-weight: normal;
+            margin-bottom: 12px;
+            float: left;
+            text-align: left;
+        }
 
-
-
-
-        
-
+        input, textarea, select{
+            border: 1px solid black;
+        }
     </style>
 </head>
+
+<body>
+    <h1> Guest book </h1>
+    <p> Please sign in my guest book </p>
+    <form method="POST" action="URL_to_script">
+        <div class="formlabel"> What is your name ?</div>
+        <div calss="formfield"> <input type="text" name="name" size="50"/> </div>
+        <div class="formlabel"> What is your email address ?</div>
+        <div calss="formfield"> <input type="text" name="email" size="50"/> </div>
+
+        <div class="formlabel"> Please check all the apply: </div>
+        <div class="formfield">
+            <input type="checkbox" name=""/>
+
+        </div>
+
+
+
+    </form>
+    
+
+
+
+
+</body>
+</html> 
 

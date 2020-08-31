@@ -3,7 +3,7 @@
 # Name:        BgCtrlTest.py
 #
 # Purpose:     TestCase Program for the BgCtrl module. This program will create 
-#              a dummy background execution program.
+#              a dummy background execution looping program.
 #          
 # Author:      Yuancheng Liu
 #
@@ -14,12 +14,14 @@
 import time
 import BgCtrl as bg
 
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 def main(mode=0):
     print("BgCtrl TestCase() program start:")
     bgctrler = bg.BgController("TestCase Program")
     time.sleep(1)
     while(bgctrler.bgRun()):
-        print("Current time: %s" %str(time.time()))
+        print("Current time: %s" % str(time.time()))
         time.sleep(1)
     print("Program End")
 

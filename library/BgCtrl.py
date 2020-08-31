@@ -2,11 +2,13 @@
 #-----------------------------------------------------------------------------
 # Name:        BgCtrl.py
 #
-# Purpose:     This module is used to create a background program controler: when 
-#              we want to run a program in back ground with a loop. Some time it is
-#              difficult for us to track whether the program is running or stop. This
-#              module is used to create a record file to record the background program 
-#              running and a system value for the user to check and control.
+# Purpose:     This module is used to create a background program controller: 
+#              When we want to run a program in back ground with a loop inside,
+#              some time it is difficult for us to track whether the program is 
+#              running or stopped if there are lots of other similar background 
+#              programs are also running. This module is used to create a record 
+#              file to record the current background program situation for the 
+#              user to check and control.
 #          
 # Author:      Yuancheng Liu
 #
@@ -14,44 +16,65 @@
 # Copyright:   
 # License:     
 #-----------------------------------------------------------------------------
+""" Program Design:
+    The file "bgProgramRcd.txt" will be created in the same folder with this 
+    module and used to record the program [ name, process ID, execution time].
+    The 'bgProgramRcd.txt' is used as a flag to identify whether the program is 
+    running: if the bgProgramRcd.txt exist and the process ID which saved in it 
+    can also be found in the system, we think the program is running in the 
+    back ground.
+
+    When we want to check whether a program[A] uses this module is running in the 
+    background, run the BgCtrl.py in the program[A]'s folder and input the control 
+    cmd [Y/N]. If we want to stop the bgprogram, the bgProgramRcd.txt file will 
+    be removed.
+"""
 
 import os
 import datetime
 
 import psutil   # >> pip install psutil
-BG_RCD = "bgProgramRcd.txt"
+
+BG_RCD = "bgProgramRcd.txt" # background program record
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 class BgController(object):
     def __init__(self, progName):
-        dirpath = os.getcwd()
+        """ Init the controller.
+        Args:
+            progName ([str]): Name of the background execution program.
+        """
+        dirpath = os.path.dirname(__file__)
         self.progName = progName
+        self.pId = os.getpid()
         self.rcdFile = os.path.join(dirpath, BG_RCD)
         try:
-            self.pId = os.getpid()
-            fh = open(self.rcdFile, 'w')
-            fh.write("Program Name\t:%s\n" %str(self.progName))
-            fh.write("Process ID\t:%s\n" %str(self.pId))
-            fh.write("Execute Time\t:%s\n" %str(datetime.datetime.now()))
-            fh.close()
+            with open(self.rcdFile, 'w') as fh:
+                fh.write("Program Name\t: %s\n" % str(self.progName))
+                fh.write("Process ID\t: %s\n" % str(self.pId))
+                fh.write("Execute Time\t: %s\n" % str(datetime.datetime.now()))
+            print("Created the background record file.")
         except Exception as e:
-            print("Create the background record file failed: %s." %str(e))
-            if os.path.exists(self.rcdFile): os.remove(self.rcdFile)
-            
+            print("Create the background record file failed: %s." % str(e))
+            if os.path.exists(self.rcdFile):
+                os.remove(self.rcdFile)
+
+ #-----------------------------------------------------------------------------
     def bgRun(self):
-        """ Check whether the program can be run in the background. 
+        """ Check whether the program currently can be executed in the background. 
             return True/False.
         """
         return os.path.exists(self.rcdFile)
 
 #-----------------------------------------------------------------------------
-
+#-----------------------------------------------------------------------------
 def main(mode=0):
     print("Check the background program running situation:")
-    dirpath = os.getcwd()
     processID = None
+    dirpath = os.path.dirname(__file__)
     rcdFile = os.path.join(dirpath, BG_RCD)
+    # Load the record file.
     if os.path.exists(rcdFile):
         with open(rcdFile, 'r') as fh:
             for line in fh.readlines():
@@ -61,11 +84,12 @@ def main(mode=0):
     else:
         print("No background record file, the program is not running.")
         exit()
-    
+
     if psutil.pid_exists(processID):
         print("The program is running. Do you want end it [Y/N]:")
     else:
-        print("The program is NOT running. Do you want to remove the record [Y/N]:")
+        print(
+            "The program is NOT running. Do you want to remove the record [Y/N]:")
     uInput = str(input()).lower()
     if uInput == 'y':
         os.remove(rcdFile)

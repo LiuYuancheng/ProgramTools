@@ -1,6 +1,20 @@
 # Network Setup Doc
 
-**This document will show the steps to setup different network device control program. The format follow below:** 
+**This document will show the steps to setup different network device control program on Rank 7 and Rank 8. The device list:**
+
+| Rank7               | Function         | Rank8                | Function   |
+| ------------------- | ---------------- | -------------------- | ---------- |
+| FORTINET 300D       | Firewall         | Cisco 2960 X         | A          |
+| Catalyst 3650       | 48PS-8           | Cisco 2960 X         | B          |
+| Catalyst 3650       | 48QS-8           | FORTINET 300D        | Firewall   |
+| Cisco ASA 5516-X    | Firewall         | Catalyst 3650        | 48PS-7     |
+| Attivo Botsink 3200 | Thread detection | Catalyst 3650        | 48QS-7     |
+| HP DL360 X5         | Server           | Cisco 2900           | Router     |
+|                     |                  | Pulse Secure Mag2600 | VPN server |
+|                     |                  | Palo-alto PA500      | Firewall   |
+|                     |                  | HP DL360x4           | Server     |
+
+**The format follow below:** 
 
 **Device [Idx] :** device name/brand
 
@@ -33,7 +47,7 @@
 
 ------
 
-##### Device [0] : CISCO 2960X 
+##### Device [1] : CISCO 2960X 
 
 **Connection Type:** SSh Putty: IP:Port(22) connection type[Telnet]
 

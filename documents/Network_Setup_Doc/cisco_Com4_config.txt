@@ -1,0 +1,269 @@
+
+INTERNET_R2>
+INTERNET_R2>
+INTERNET_R2>en
+Password:!Q@W#E$R14
+INTERNET_R2#show run
+Building configuration...
+
+Current configuration : 3940 bytes
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname INTERNET_R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$TfXJ$zNWqQMD3hJSHIcoHgRyaf0
+!
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+bsd-client server url https://cloudsso.cisco.com/as/token.oauth2
+clock timezone UTC 8 0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+license udi pid CISCO2901/K9 sn FGL1952228L
+!
+!
+username rodus privilege 15 password 7 090D7F292E463256395D50
+!
+redundancy
+!
+!
+!
+!
+!
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ description 50M ETHCE00127941SNG
+ ip address 118.201.213.138 255.255.255.252
+ duplex full
+ speed 100
+!
+interface GigabitEthernet0/1
+ description Internet_R2-to-Internet_Switch
+ ip address 118.201.197.193 255.255.255.240
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Async0/0/0
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/0
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/1
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/1
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/2
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/2
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/3
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/3
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/4
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/4
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/5
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/5
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/6
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/6
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/7
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/7
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/8
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/8
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/9
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/9
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/10
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/10
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/11
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/11
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/12
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/12
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/13
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/13
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/14
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/14
+ no ip address
+ encapsulation slip
+!
+interface Async0/0/15
+ no ip address
+ encapsulation slip
+!
+interface Async0/1/15
+ no ip address
+ encapsulation slip
+!
+router bgp 65423
+ bgp router-id 118.201.213.138
+ bgp log-neighbor-changes
+ bgp graceful-restart restart-time 120
+ bgp graceful-restart stalepath-time 360
+ bgp graceful-restart
+ network 118.201.197.192 mask 255.255.255.240
+ neighbor 118.201.213.137 remote-as 9255
+ neighbor 118.201.213.137 soft-reconfiguration inbound
+ neighbor 118.201.213.137 route-map PrePend out
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+ip prefix-list SUBNETA seq 5 permit 118.201.197.192/28
+!
+ip prefix-list SUBNETB seq 5 permit 118.201.197.208/28
+!
+route-map PrePend permit 10
+ match ip address SUBNETA
+ set as-path prepend 65423 65423 65423 65423 65423
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line 0/0/0 0/1/15
+line vty 0 4
+ password 7 05080F1C2243
+ transport input telnet
+line vty 5 15
+ password 7 121A0C041104
+ transport input telnet
+!
+scheduler allocate 20000 1000
+!
+end

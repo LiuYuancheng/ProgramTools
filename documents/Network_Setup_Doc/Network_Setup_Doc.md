@@ -9,10 +9,13 @@
 | Catalyst 3650       | 48QS-8           | FORTINET 300D        | Firewall   |
 | Cisco ASA 5516-X    | Firewall         | Catalyst 3650        | 48PS-7     |
 | Attivo Botsink 3200 | Thread detection | Catalyst 3650        | 48QS-7     |
-| HP DL360 X5         | Server           | Cisco 2900           | Router     |
-|                     |                  | Pulse Secure Mag2600 | VPN server |
-|                     |                  | Palo-alto PA500      | Firewall   |
-|                     |                  | HP DL360x4           | Server     |
+| HP DL360            | ENGRG_ESX        | Cisco 2900           | Router     |
+| HP DL360            | RD-INC_ESX       | Pulse Secure Mag2600 | VPN server |
+| HP DL360            | CEN_SERV         | Palo-alto PA500      | Firewall   |
+| HP DL360            | ENGRG_SERV_1     | HP DL360             | DMZ_ESX    |
+| HP DL360            | ENGRG_SERV_2     | HP DL360             | RD_SVN     |
+|                     |                  | HP DL360             | RD_SERV_1  |
+|                     |                  | HP DL360             | INC_SERV_1 |
 
 **The format follow below:** 
 

@@ -22,6 +22,7 @@ Router R2
 | HP DL360            | ENGRG_SERV_2     | HP DL360             | RD_SVN     |
 |                     |                  | HP DL360             | RD_SERV_1  |
 |                     |                  | HP DL360             | INC_SERV_1 |
+|                     |                  | HP GPU server        |            |
 
 **The format follow below:** 
 
@@ -37,6 +38,8 @@ Router R2
 
 
 **HPE account:** yuancheng.liu@trustwave.com
+
+**Fortinet account**: yuancheng.liu@trustwave.com
 
 
 
@@ -86,7 +89,13 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
 
      Login => Dashboard => Main => Licenses => FortiCare Support.
 
-2. ...
+2. Check the service information: 
+
+     => Login Fortinet service web[https://support.fortinet.com/Main.aspx] with account yuancheng.liu@trustwave.com
+
+     => Asset => Mange/view product
+
+3. 
 
 ------
 
@@ -104,3 +113,16 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
 
 ------
 
+##### **Device [04] :** HP GPU server
+
+**Connection Type:** http
+
+**Setup Details:** 
+
+1. Check machine warranty expired time
+
+   => Login Hewlett Packard Enterprise Support Center[https://support.hpe.com/hpesc/public/home] with account yuancheng.liu@trustwave.com
+
+   => Contracts and warranties => View my contracts & warranties => Linked warranties
+
+2. ...

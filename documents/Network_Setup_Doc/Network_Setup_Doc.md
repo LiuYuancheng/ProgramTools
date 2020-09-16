@@ -2,7 +2,13 @@
 
 **This document will show the steps to setup different network device control program on Rank 7 and Rank 8. The device list:**
 
-| Rank7               | Function         | Rank8                | Function   |
+**Server Room**
+
+Router R2
+
+**Data Center**
+
+| Rank7(WE-07)        | Function         | Rank8(WE-08)         | Function   |
 | ------------------- | ---------------- | -------------------- | ---------- |
 | FORTINET 300D       | Firewall         | Cisco 2960 X         | A          |
 | Catalyst 3650       | 48PS-8           | Cisco 2960 X         | B          |
@@ -28,11 +34,17 @@
 1. example: add a new VPN user. 
 2. ...
 
+
+
+**HPE account:** yuancheng.liu@trustwave.com
+
+
+
 [TOC]
 
 ------
 
-##### Device [0] : Pulse Secure MAG2600 Gateway/VPN Server
+##### Device [00] : Pulse Secure MAG2600 Gateway/VPN Server
 
 **Connection Type:** Http:ipaddr/admin
 
@@ -46,14 +58,49 @@
 
    Users => User Reams => Local Users => Role Mapping => "username is"  => "* Rule IF username..."
 
-3. 
+3. Normal user password expired: 
+
+   Let the user change them self: login http without "/admin" => General => update password. 
 
 ------
 
-##### Device [1] : CISCO 2960X 
+##### Device [01] : CISCO 2960X 
 
 **Connection Type:** SSh Putty: IP:Port(22) connection type[Telnet]
 
 **Setup Details:** 
 
 https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release/3se/vlan/configuration_guide/b_vlan_3se_3850_cg/b_vlan_3se_3850_cg_chapter_0110.html
+
+
+
+------
+
+##### **Device [02] :** Fortinet FG-300D-7 MGMT Firewall
+
+**Connection Type:** http
+
+**Setup Details:** 
+
+1. Check the firewall machine warranty: 
+
+     Login => Dashboard => Main => Licenses => FortiCare Support.
+
+2. ...
+
+------
+
+##### **Device [03] :** Catalyst 3650
+
+**Connection Type:** CAT-5 Cable
+
+**Setup Details:** 
+
+1. Access the supper admin port 
+
+    Plug in Cat-5 cable in port "VLAN300", set computer static IP to 172.16.240.12, gateway  172.16.240.1
+
+2. ...
+
+------
+

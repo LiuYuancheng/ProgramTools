@@ -71,7 +71,6 @@ class PanelImge(wx.Panel):
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
-
 class PanelCtrl(wx.Panel):
     """ Function control panel."""
 
@@ -84,7 +83,7 @@ class PanelCtrl(wx.Panel):
 #--PanelCtrl-------------------------------------------------------------------
     def _buidUISizer(self):
         """ build the control panel sizer. """
-        flagsR = wx.RIGHT | wx.ALIGN_CENTER_VERTICAL
+        flagsR = wx.CENTER
         ctSizer = wx.BoxSizer(wx.VERTICAL)
         hbox0 = wx.BoxSizer(wx.HORIZONTAL)
         ctSizer.AddSpacer(5)
@@ -94,7 +93,30 @@ class PanelCtrl(wx.Panel):
         ctSizer.Add(hbox0, flag=flagsR, border=2)
         return ctSizer
 
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+def main():
+    """ Main function used for local test debug panel. """
 
+    print('Test Case start: type in the panel you want to check:')
+    print('0 - PanelImge')
+    print('1 - PanelCtrl')
+    #pyin = str(input()).rstrip('\n')
+    #testPanelIdx = int(pyin)
+    testPanelIdx = 1    # change this parameter for you to test.
+    print("[%s]" %str(testPanelIdx))
+    app = wx.App()
+    mainFrame = wx.Frame(gv.iMainFrame, -1, 'Debug Panel',
+                         pos=(300, 300), size=(640, 480), style=wx.DEFAULT_FRAME_STYLE)
+    if testPanelIdx == 0:
+        testPanel = PanelImge(mainFrame)
+    elif testPanelIdx == 1:
+        testPanel = PanelCtrl(mainFrame)
+    mainFrame.Show()
+    app.MainLoop()
+
+if __name__ == "__main__":
+    main()
 
 
 

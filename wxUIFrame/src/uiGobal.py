@@ -12,17 +12,24 @@
 #-----------------------------------------------------------------------------
 import os
 
-dirpath = os.getcwd()
-print("Current working directory is : %s" % dirpath)
-APP_NAME = 'uiFrame'
+print("Current working directory is : %s" % os.getcwd())
+dirpath = os.path.dirname(__file__)
+print("Current source code location : %s" % dirpath)
+APP_NAME = 'uiFrame [Ver:0.X]'
 
 #------<IMAGES PATH>-------------------------------------------------------------
 IMG_FD = 'img'
 ICO_PATH = os.path.join(dirpath, IMG_FD, "geoIcon.ico")
 BGIMG_PATH = os.path.join(dirpath, IMG_FD, "SampleImg.png")
 
+#-------<GLOBAL VARIABLES (start with "g")>------------------------------------
+# VARIABLES are the built in data type.
+gTranspPct = 70     # Windows transparent percentage.
+gUpdateRate = 1     # main frame update rate 1 sec.
+
+
 #-------<GLOBAL PARAMTERS>-----------------------------------------------------
 iMainFrame = None   # MainFrame.
 iImagePanel = None  # Image panel.
 iCtrlPanel = None   # control panel
-iUpdateRate = 1     # main frame update rate 1 sec.
+

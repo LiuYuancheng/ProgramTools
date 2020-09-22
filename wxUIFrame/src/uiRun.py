@@ -2,7 +2,7 @@
 #-----------------------------------------------------------------------------
 # Name:        uiRun.py
 #
-# Purpose:     This module is used to create the main wx frame.
+# Purpose:     This module is used as a sample to create the main wx frame.
 #
 # Author:      Yuancheng Liu
 #
@@ -10,7 +10,8 @@
 # Copyright:   YC @ Singtel Cyber Security Research & Development Laboratory
 # License:     YC
 #-----------------------------------------------------------------------------
-import os, sys
+import os
+import sys
 import time
 import wx
 import uiGobal as gv
@@ -20,12 +21,16 @@ PERIODIC = 500      # update in every 500ms
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 class UIFrame(wx.Frame):
-    """ URL/IP gps position finder main UI frame."""
+    """ Main UI frame window."""
     def __init__(self, parent, id, title):
         """ Init the UI and parameters """
         wx.Frame.__init__(self, parent, id, title, size=(1150, 560))
+        # No boader frame:
+        #wx.Frame.__init__(self, parent, id, title, style=wx.MINIMIZE_BOX | wx.STAY_ON_TOP)
         self.SetBackgroundColour(wx.Colour(200, 210, 200))
+        self.SetTransparent(gv.gTranspPct*255//100)
         self.SetIcon(wx.Icon(gv.ICO_PATH))
+        # Build UI sizer
         self.SetSizer(self._buidUISizer())
         # Set the periodic call back
         self.lastPeriodicTime = time.time()
@@ -37,7 +42,7 @@ class UIFrame(wx.Frame):
 #--UIFrame---------------------------------------------------------------------
     def _buidUISizer(self):
         """ Build the main UI Sizer. """
-        flagsR = wx.RIGHT | wx.ALIGN_CENTER_VERTICAL
+        flagsR = wx.CENTER
         mSizer = wx.BoxSizer(wx.HORIZONTAL)
         mSizer.AddSpacer(5)
         gv.iImagePanel = pl.PanelImge(self)
@@ -54,7 +59,7 @@ class UIFrame(wx.Frame):
     def periodic(self, event):
         """ Call back every periodic time."""
         now = time.time()
-        if (not self.updateLock) and now - self.lastPeriodicTime >= gv.iUpdateRate:
+        if (not self.updateLock) and now - self.lastPeriodicTime >= gv.gUpdateRate:
             print("main frame update at %s" % str(now))
             self.lastPeriodicTime = now
 
@@ -66,5 +71,7 @@ class MyApp(wx.App):
         gv.iMainFrame.Show(True)
         return True
 
-app = MyApp(0)
-app.MainLoop()
+#-----------------------------------------------------------------------------
+if __name__ == '__main__':
+    app = MyApp(0)
+    app.MainLoop()

@@ -102,6 +102,11 @@ def testCase(mode):
         client = servThread = None
     else:
         print("Add more other exception test here.")
+        client = udpCom.udpClient(('127.0.0.1', UDP_PORT))
+        for i in range(3):
+            msg = "Test data %s" %str(i)
+            result = client.sendMsg(msg, resp=False)
+
 #-----------------------------------------------------------------------------
 if __name__ == '__main__':
-    testCase(1)
+    testCase(0)

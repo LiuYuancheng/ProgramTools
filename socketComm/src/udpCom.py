@@ -34,6 +34,7 @@ class udpClient(object):
                 return the bytes format response if it is set to True. 
         """
         if not ipAddr is None: self.ipAddr = ipAddr  # reset ip address.
+        if self.client is None: return None # Check whether disconnected.
         if not isinstance(msg, bytes): msg = str(msg).encode('utf-8')
         self.client.sendto(msg, self.ipAddr)
         if resp:
@@ -44,7 +45,7 @@ class udpClient(object):
             except ConnectionResetError as error:
                 print("udpClient: Can not connect to the server!")
                 print(error)
-                self.disconnect()
+                # self.disconnect() not need to diconnect if we want to do reconnect.
                 return None
         return None
 
@@ -91,3 +92,16 @@ class udpServer(object):
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 # Test case program: udpComTest.py
+def main():
+    """ Main function used for demo the module."""
+    print("Run the module as a UDP (1) UDP echo server (2) UDP client: ")
+    uInput = str(input())
+    if uInput == '1':
+        client = udpCom.udpClient(('127.0.0.1', UDP_PORT))
+    elif uInput == '2':
+        pass
+    else:
+        print("Input %s is not valid, program terminate." )
+
+if __name__ == "__main__":
+    main()

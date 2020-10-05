@@ -1,12 +1,20 @@
 # Network Setup Doc
 
-**This document will show the steps to setup different network device control program on Rank 7 and Rank 8. The device list:**
+#### Introduction 
 
-**Server Room**
+**This document will show the steps to setup different network device control program on WE7 and WE 8 server stack.**
 
-Router R2
+[TOC]
 
-**Data Center**
+------
+
+#### Device Location and List
+
+###### Server Room
+
+Router R2 (USB interface)
+
+###### Data Center
 
 | Rank7(WE-07)        | Function         | Rank8(WE-08)         | Function   |
 | ------------------- | ---------------- | -------------------- | ---------- |
@@ -24,9 +32,15 @@ Router R2
 |                     |                  | HP DL360             | INC_SERV_1 |
 |                     |                  | HP GPU server        |            |
 
+
+
+#### Device Configuration Setup
+
+#### 
+
 **The format follow below:** 
 
-**Device [Idx] :** device name/brand
+###### Device [Idx] : device name/brand
 
 **Connection Type:** http/https/ssh(with the putty seting)
 
@@ -37,17 +51,9 @@ Router R2
 
 
 
-**HPE account:** yuancheng.liu@trustwave.com
-
-**Fortinet account**: yuancheng.liu@trustwave.com
-
-
-
-[TOC]
-
 ------
 
-##### Device [00] : Pulse Secure MAG2600 Gateway/VPN Server
+###### Device [00] : Pulse Secure MAG2600 Gateway/VPN Server
 
 **Connection Type:** Http:ipaddr/admin
 
@@ -67,7 +73,7 @@ Router R2
 
 ------
 
-##### Device [01] : CISCO 2960X 
+###### Device [01] : CISCO 2960X 
 
 **Connection Type:** SSh Putty: IP:Port(22) connection type[Telnet]
 
@@ -79,7 +85,7 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
 
 ------
 
-##### **Device [02] :** Fortinet FG-300D-7 MGMT Firewall
+###### Device [02] : Fortinet FG-300D-7 MGMT Firewall
 
 **Connection Type:** http
 
@@ -99,7 +105,7 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
 
 ------
 
-##### **Device [03] :** Catalyst 3650
+###### Device [03] : Catalyst 3650
 
 **Connection Type:** CAT-5 Cable
 
@@ -113,7 +119,7 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
 
 ------
 
-##### **Device [04] :** HP GPU server
+###### Device [04] : HP GPU server
 
 **Connection Type:** http
 
@@ -126,3 +132,42 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
    => Contracts and warranties => View my contracts & warranties => Linked warranties
 
 2. ...
+
+
+
+------
+
+###### Device [05] : HP DL360 ESXi VM Server
+
+**Connection Type:** http
+
+**Setup Details:** 
+
+1. Create A VM on the server: 
+
+   => Login the VM server => Select "Create/Register VM" => follow the step to create the VM => 1.Select create type =>2.select a name and guest OS => 3.select storage => 4.Customize Settings[Click the "Hard Disk1" ->Disk Provisioning -> select "**Thin provisioned**"(important)] => Ready to complete.
+
+2. 
+
+
+
+------
+
+#### Network IP Mapping Configuration
+
+
+
+------
+
+#### Device License and warranty check
+
+**HPE account:** yuancheng.liu@trustwave.com
+
+**Fortinet account**: yuancheng.liu@trustwave.com
+
+
+
+Question 1: 
+
+1. Create a VM in one server machine, I know which Vlan the server belongs to and the VM's IP address , then at  Fortinet FG-300D should I use the IPv4 to 
+

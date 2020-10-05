@@ -91,17 +91,38 @@ class udpServer(object):
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
-# Test case program: udpComTest.py
+# Use case program: udpComTest.py
+
+def msgHandler(msg):
+    """ The test handler method passed into the UDP server to handle the 
+        incoming messages.
+    """
+    print("Incomming message: %s" % str(msg))
+    return msg
+
 def main():
     """ Main function used for demo the module."""
     print("Run the module as a UDP (1) UDP echo server (2) UDP client: ")
     uInput = str(input())
     if uInput == '1':
-        client = udpCom.udpClient(('127.0.0.1', UDP_PORT))
+        print(" - Please input the UDP port: ")
+        udpPort = int(str(input()))
+        server = udpServer(None, udpPort)
+        print("Start the UDP echo server licening port [%s]" % udpPort)
+        server.serverStart(handler=msgHandler)
     elif uInput == '2':
-        pass
+        print(" - Please input the IP address: ")
+        ipAddr = str(input())
+        print(" - Please input the UDP port: ")
+        udpPort = int(str(input()))
+        client = udpClient((ipAddr, udpPort))
+        while True:
+            print(" - Please input the message: ")
+            msg = str(input())
+            resp = client.sendMsg(msg, resp=True)
+            print(" - Server resp: %s" % str(resp))
     else:
-        print("Input %s is not valid, program terminate." )
+        print("Input %s is not valid, program terminate." % str(uInput))
 
 if __name__ == "__main__":
     main()

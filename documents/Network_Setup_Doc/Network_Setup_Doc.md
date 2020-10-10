@@ -71,6 +71,15 @@ Router R2 (USB interface)
 
    Let the user change them self: login http without "/admin" => General => update password. 
 
+4. The user can not log in because of  win10 vpn said the server certificate is not trusted as the user download the pulse secure VPN client from the Windows App store: 
+
+   - Let the user uninstalled  the pulse secure VPN client from the Windows App store. 
+   - Download the Pulse secure VPN client  and re-install this Pulse Secure VPN client on user's  machine (https://www.pulsesecure.net/trynow/client-download/ and let the user Login again.
+
+5. 
+
+   
+
 ------
 
 ###### Device [01] : CISCO 2960X 

@@ -90,7 +90,43 @@ Router R2 (USB interface)
 
 https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release/3se/vlan/configuration_guide/b_vlan_3se_3850_cg/b_vlan_3se_3850_cg_chapter_0110.html
 
+=> If not understand how the cmd work, just add the char '?' behind the command. 
 
+1. How to remove a session: 
+
+   Switch>enable
+
+   Switch#show run
+
+   Switch#configure
+
+   Switch(config)#no monitor session 2 source interface Gi2/0/13 - 14 
+
+   Switch(config)#exit
+
+   Switch#show run
+
+   Switch#copy run start
+
+   Switch#[press enter to confirm.]
+
+2. How to add a monitor session: 
+
+   Switch>enable
+
+   Switch#config
+
+   Switch(config)#monitor session 2 source interface gigabitEthernet 2/0/20 rx 
+
+   Switch(config)#exit
+
+   Switch#show run
+
+   Switch#copy run start
+
+   Switch#[press enter to confirm.]
+
+3. 
 
 ------
 

@@ -192,7 +192,17 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
 
    => Login the VM server => Select "Create/Register VM" => follow the step to create the VM => 1.Select create type =>2.select a name and guest OS => 3.select storage => 4.Customize Settings[Click the "Hard Disk1" ->Disk Provisioning -> select "**Thin provisioned**"(important)] => Ready to complete.
 
-2. 
+2. Created VM shows error: 
+
+   PXE-M0F: Exiting iontel PXE ROM. 
+
+   Operating system not found
+
+   => Edit => CD/DVD Drive 1=> Select "DataStore ISO file" => CD/DVD Media => Browse =>  dataSore1 => ISO => select needed system iso => save. 
+
+   => reboot the VM and install the system.
+
+3. 
 
 
 

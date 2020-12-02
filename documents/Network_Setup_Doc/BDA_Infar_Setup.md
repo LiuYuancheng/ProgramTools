@@ -13,7 +13,14 @@
 
 ------
 
+###### BDA hardware spec
 
+| Idx  | Device Spec                               | Function |
+| ---- | ----------------------------------------- | -------- |
+| 0    | Sun Network QDR InfiniBand Gateway Switch |          |
+| 1    | Cisco Switch PN : WS-X4993-F              |          |
+| 2    | Sun Network QDR InfiniBand Gateway Switch |          |
+| 3    | BDA Servers                               |          |
 
 
 

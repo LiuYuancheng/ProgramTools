@@ -221,8 +221,3 @@ https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3850/software/release
 **Fortinet account**: yuancheng.liu@trustwave.com
 
 
-
-Question 1: 
-
-1. Create a VM in one server machine, I know which Vlan the server belongs to and the VM's IP address , then at  Fortinet FG-300D should I use the IPv4 to 
-

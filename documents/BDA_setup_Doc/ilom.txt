@@ -1,0 +1,58 @@
+10.77.60.11 - bda1node06-ilom
+10.77.60.12 - bda1node07-ilom
+changed to : 
+10.77.60.11 - bda1node06-ilom -> 172.16.129.28
+10.77.60.12 - bda1node07-ilom -> 172.16.129.29
+
+
+
+Connection to 172.16.129.17 22 port [tcp/*] succeeded!
+
+Connection to 172.16.129.18 22 port [tcp/*] succeeded!
+bda1sw-ib1
+Connection to 172.16.129.19 22 port [tcp/*] succeeded!
+bda1sw-ib2
+Connection to 172.16.129.20 22 port [tcp/*] succeeded!
+bda1sw-ib3
+Connection to 172.16.129.21 22 port [tcp/*] succeeded!
+bda1-pdua
+Connection to 172.16.129.22 22 port [tcp/*] succeeded!
+bda1-pdub
+Connection to 172.16.129.23 22 port [tcp/*] succeeded!
+bda1node01-ilom, BDA X5-2
+Connection to 172.16.129.24 22 port [tcp/*] succeeded!
+bda1node02-ilom
+Connection to 172.16.129.25 22 port [tcp/*] succeeded!
+bda1node03-ilom
+Connection to 172.16.129.26 22 port [tcp/*] succeeded!
+bda1node04-ilom
+Connection to 172.16.129.27 22 port [tcp/*] succeeded!
+bda1node05-ilom
+
+Connection to 172.16.129.41 22 port [tcp/*] succeeded!
+
+Connection to 172.16.129.42 22 port [tcp/*] succeeded!
+bda1node08-ilom
+Connection to 172.16.129.43 22 port [tcp/*] succeeded!
+bda1node09-ilom
+
+Connection to 172.16.129.100 22 port [tcp/*] succeeded!
+
+
+VLAN according to doc:
+VLAN 28 (10.10.28.x/24)
+
+
+34 UP          N 506B4B0300621421        bda1node09 BDA 192.16.130.18     0000 16:21:0A:0A:1C:12 28  0xffff 0A-ETH-1
+ 36 WAIT-IOA    N 0010E0000185A031        bda1node03 BDA 192.16.130.12     0000 A2:31:0A:0A:1C:0C 28  0xffff 0A-ETH-1
+ 30 WAIT-IOA    N 0010E00001859671        bda1node07 BDA 192.16.130.16     0000 96:71:0A:0A:1C:10 28  0xffff 0A-ETH-1
+ 35 WAIT-IOA    N 506B4B0300625C81        bda1node08 BDA 192.16.130.17     0000 5E:81:0A:0A:1C:11 28  0xffff 0A-ETH-1
+ 37 WAIT-IOA    N 0010E00001859591        bda1node01 BDA 192.16.130.10     0000 96:91:0A:0A:1C:0A 28  0xffff 0A-ETH-1
+ 33 WAIT-IOA    N 0010E000018664A1        bda1node04 BDA 192.16.130.13     0000 66:A1:0A:0A:1C:0D 28  0xffff 0A-ETH-1
+ 38 WAIT-IOA    N 0010E0000185B4A1        bda1node02 BDA 192.16.130.11     0000 B6:A1:0A:0A:1C:0B 28  0xffff 0A-ETH-1
+ 31 WAIT-IOA    N 0010E000018595B1        bda1node06 BDA 192.16.130.15     0000 96:B1:0A:0A:1C:0F 28  0xffff 0A-ETH-1
+ 32 WAIT-IOA    N 0010E0000185B9C1        bda1node05 BDA 192.16.130.14     0000 BA:C1:0A:0A:1C:0E 28  0xffff 0A-ETH-1
+ Connector/LAG  VLN   PKEY
+   -------------  ---   ------
+   0A-ETH-1        28   0xffff
+
